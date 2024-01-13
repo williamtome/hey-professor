@@ -9,7 +9,9 @@ class QuastionController extends Controller
 {
     public function store()
     {
-        $attributes = request()->validate(['question'=> ['required']]);
+        $attributes = request()->validate([
+            'question'=> ['required', 'min:10'],
+        ]);
 
         Question::query()->create($attributes);
 
